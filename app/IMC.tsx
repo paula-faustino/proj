@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function ImcScreen() {
   const [altura, setAltura] = useState('');
@@ -15,20 +15,23 @@ export default function ImcScreen() {
     }
   };
 
-  
   useEffect(() => {
     if (imc !== null) {
       console.log(`IMC calculado: ${imc}`);
-    
     }
-  }, [imc]); 
+  }, [imc]);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Calculadora de IMC</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Meu IMC</Text>
+      </View>
+
+      <Text style={styles.title}>Informe seus dados</Text>
+
       <TextInput
         style={styles.input}
-        placeholder="Altura (ex: 1.75)"
+        placeholder="Altura (ex: 1.75) use ponto!"
         keyboardType="numeric"
         value={altura}
         onChangeText={setAltura}
@@ -40,7 +43,11 @@ export default function ImcScreen() {
         value={peso}
         onChangeText={setPeso}
       />
-      <Button title="Calcular IMC" onPress={calcularIMC} />
+
+      <TouchableOpacity style={styles.button} onPress={calcularIMC}>
+        <Text style={styles.buttonText}>Calcular IMC</Text>
+      </TouchableOpacity>
+
       {imc && (
         <Text style={styles.resultado}>
           Seu IMC é: <Text style={{ fontWeight: 'bold' }}>{imc}</Text>
@@ -51,46 +58,15 @@ export default function ImcScreen() {
 }
 
 const styles = StyleSheet.create({
- container: {
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#f7fdfc', // cor de fundo mais clean
-  padding: 20,
-  borderRadius: 20,
-  shadowColor: '#000',
-  shadowOffset: {
-    width: 0,
-    height: 2,
-  },
-  shadowOpacity: 0.3,
-  shadowRadius: 4,
-  elevation: 5,
-  },
-  title: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-    color: 'lightgreen',
+  container: {
+    flex: 1,
   },
 
-  input: {
-  width: '100%',
-  borderWidth: 1,
-  borderColor: '#a3d9a5',
-  borderRadius: 25,
-  paddingVertical: 15,
-  paddingHorizontal: 20,
-  marginBottom: 15,
-  backgroundColor: '#fff',
-  shadowRadius: 2,
-},
-  button: {
-    backgroundColor: '#4CAF50', // cor verde mais suave
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 25,
+  header: {
+    backgroundColor: 'lightgreen',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 150,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -101,24 +77,61 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 
+  headerTitle: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 20,
+    textAlign: 'center',
+    color: 'green',
+    marginTop: 200,
+  },
+
+  input: {
+    width: 300,
+    borderWidth: 1,
+    borderColor: '#a3d9a5',
+    color: 'grey',
+    borderRadius: 25,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginBottom: 15,
+    backgroundColor: '#fff',
+    alignSelf: 'center',
+  },
+
+  button: {
+    backgroundColor: 'green',
+    padding: 15,
+    borderRadius: 25,
+    marginTop: 20,
+    width: 300,
+    alignSelf: 'center',
+  },
 
   buttonText: {
     color: 'white',
-  fontWeight: 'bold',
-  fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 16,
   },
-  
+
   resultado: {
-  marginTop: 40,
-  fontSize: 20,
-  color: '#2e7d32',
-  textAlign: 'center',
-  backgroundColor: '#e6f4ea',
-  padding: 15,
-  borderRadius: 15,
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.3,
-  shadowRadius: 4,
-  elevation: 5,
-}});
+    marginTop: 40,
+    fontSize: 20,
+    color: '#2e7d32',
+    textAlign: 'center',
+    backgroundColor: '#e6f4ea',
+    padding: 15,
+    borderRadius: 25,
+    marginHorizontal: 20,
+    elevation: 5,
+    width: 300,
+    alignSelf: 'center',
+  },
+});
