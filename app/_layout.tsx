@@ -27,7 +27,7 @@ export default function TabLayout() {
 <Tabs.Screen
   name="IMC"
   options={{
-    title: 'IMC', // Nome amigável no cabeçalho e aba
+    title: 'IMC', 
     tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
   }}
 />

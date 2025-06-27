@@ -15,13 +15,13 @@ export default function ImcScreen() {
     }
   };
 
-  // useEffect que executa sempre que o valor do IMC mudar
+  
   useEffect(() => {
     if (imc !== null) {
       console.log(`IMC calculado: ${imc}`);
-      // Aqui você pode disparar outras ações que precisam do novo IMC
+    
     }
-  }, [imc]); // <-- depende da variável 'imc'
+  }, [imc]); 
 
   return (
     <View style={styles.container}>
