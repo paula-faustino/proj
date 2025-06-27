@@ -16,19 +16,23 @@ export default function SobreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 30,
     justifyContent: 'center',
-    backgroundColor: '#f0fdf4',
+    backgroundColor: '#eafaf1',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    fontSize: 30,
+    fontWeight: '700',
+    marginBottom: 25,
     textAlign: 'center',
-    color: 'green',
+    color: '#2e7d32',
   },
   text: {
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'center',
+    color: '#4e4e4e',
+    lineHeight: 26,
+    paddingHorizontal: 10,
   },
 });
+
